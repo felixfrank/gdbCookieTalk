@@ -27,6 +27,7 @@ void sort(long *array, size_t size) {
 int main(int argc, char const *argv[]) {
   struct timespec tp;
   int res = clock_gettime(CLOCK_MONOTONIC, &tp);
+  // tp.tv_nsec = 867306607;
   srand(tp.tv_nsec);
 
   long data[50];
@@ -34,20 +35,20 @@ int main(int argc, char const *argv[]) {
     data[i] = rand();
   }
 
-  // printf("Unsorted array:\n [");
-  // for (int i = 0; i < 49; ++i)
-  // {
-  //   printf("%hd, ", data[i]);
-  // }
-  // printf("%hd]\n", data[49]);
+  printf("Unsorted array:\n [");
+  for (int i = 0; i < 49; ++i)
+  {
+    printf("%ld, ", data[i]);
+  }
+  printf("%ld]\n", data[49]);
 
   sort(data, 50);
 
-  // printf("Sorted array:\n [");
-  // for (int i = 0; i < 49; ++i)
-  // {
-  //   printf("%hd, ", data[i]);
-  // }
-  // printf("%hd]\n", data[49]);
+  printf("Sorted array:\n [");
+  for (int i = 0; i < 49; ++i)
+  {
+    printf("%ld, ", data[i]);
+  }
+  printf("%ld]\n", data[49]);
   return 0;
 }
