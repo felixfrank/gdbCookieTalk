@@ -25,30 +25,34 @@ void sort(long *array, size_t size) {
 }
 
 int main(int argc, char const *argv[]) {
+  int i = 0;
+
   struct timespec tp;
   int res = clock_gettime(CLOCK_MONOTONIC, &tp);
-  // tp.tv_nsec = 867306607;
   srand(tp.tv_nsec);
+  long data[60];
 
-  long data[50];
-  for (int i = 0; i < rand() % sizeof(data); ++i) {
+  for (int i = 0; i < rand() % sizeof data; i++) {
+    if ((long *) &i == &data[i])
+      continue;
     data[i] = rand();
   }
 
   printf("Unsorted array:\n [");
-  for (int i = 0; i < 49; ++i)
+  for (int i = 0; i < 59; ++i)
   {
     printf("%ld, ", data[i]);
   }
-  printf("%ld]\n", data[49]);
+  printf("%ld]\n", data[59]);
 
-  sort(data, 50);
+  sort(data, 60);
 
+  printf("------------------------------\n");
   printf("Sorted array:\n [");
-  for (int i = 0; i < 49; ++i)
+  for (int i = 0; i < 59; ++i)
   {
     printf("%ld, ", data[i]);
   }
-  printf("%ld]\n", data[49]);
+  printf("%ld]\n", data[59]);
   return 0;
 }
